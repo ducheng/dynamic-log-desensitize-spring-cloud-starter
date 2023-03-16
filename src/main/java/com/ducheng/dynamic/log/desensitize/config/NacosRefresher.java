@@ -20,15 +20,15 @@ public class NacosRefresher extends AbstractRefresher  implements ApplicationLis
     @Autowired
     private NacosConfigProperties nacosConfigProperties;
 
-    @Value("${spring.application.name}")
-    private String serviceName;
+    @Value("${spring.cloud.dynamic.log.dataId}")
+    private String dataId;
 
     @Override
     public void onApplicationEvent(EnvironmentChangeEvent environmentChangeEvent) {
         ConfigService configService = null;
         try {
             configService = NacosFactory.createConfigService(nacosConfigProperties.assembleConfigServiceProperties());
-            String config = configService.getConfig(serviceName, nacosConfigProperties.getGroup(),1000);
+            String config = configService.getConfig(dataId, nacosConfigProperties.getGroup(),1000);
             refresher(config);
             log.info("打印参数：{}",config);
         } catch (NacosException e) {
