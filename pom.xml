@@ -12,7 +12,7 @@
 
 	<groupId>com.github.ducheng</groupId>
 	<artifactId>dynamic-log-desensitize-spring-cloud-starter</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.3</version>
 	<packaging>jar</packaging>
 
 	<name>dynamic-log-desensitize-spring-cloud-starter</name>
