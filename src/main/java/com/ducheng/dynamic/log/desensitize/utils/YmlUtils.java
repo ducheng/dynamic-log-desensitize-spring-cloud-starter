@@ -6,7 +6,6 @@ import com.alibaba.nacos.api.config.ConfigService;
 import com.alibaba.nacos.api.exception.NacosException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
@@ -14,14 +13,14 @@ import org.yaml.snakeyaml.Yaml;
 import javax.annotation.PostConstruct;
 import java.util.*;
 
-@Component
+
 public class YmlUtils {
 
     @Autowired
     private NacosConfigProperties nacosConfigProperties;
 
-    @Value("${spring.application.name}")
-    private String serviceName;
+    @Value("${spring.cloud.dynamic.log.dataId}")
+    private String dataId;
 
     /** Key：pattern - 单规则 */
     public static final String PATTERN = "pattern";
@@ -42,7 +41,7 @@ public class YmlUtils {
     @PostConstruct
     public void init() throws NacosException {
         ConfigService configService = NacosFactory.createConfigService(nacosConfigProperties.assembleConfigServiceProperties());
-        String content = configService.getConfig(serviceName, nacosConfigProperties.getGroup(),1000);
+        String content = configService.getConfig(dataId, nacosConfigProperties.getGroup(),1000);
         OPTIONS.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
         patternMap = getYmlByName(content);
     }

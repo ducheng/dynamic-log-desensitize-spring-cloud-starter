@@ -10,12 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.environment.EnvironmentChangeEvent;
 import org.springframework.context.ApplicationListener;
-import org.springframework.stereotype.Component;
 /**
- *  nacos De监听器，监听nacos 的变化
+ *  nacos 的监听器，监听nacos 的变化
  */
 
-@Component
 @Slf4j
 public class NacosRefresher extends AbstractRefresher  implements ApplicationListener<EnvironmentChangeEvent> {
 
