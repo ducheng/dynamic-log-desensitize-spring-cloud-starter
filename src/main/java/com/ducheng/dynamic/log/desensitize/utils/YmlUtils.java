@@ -19,8 +19,8 @@ public class YmlUtils {
     @Autowired
     private NacosConfigProperties nacosConfigProperties;
 
-    @Value("${spring.cloud.dynamic.log.dataId}")
-    private String dataId;
+    //@Value("${spring.cloud.dynamic.log.dataId}")
+    private String dataId = "20230328text";
 
     /** Key：pattern - 单规则 */
     public static final String PATTERN = "pattern";
@@ -38,7 +38,7 @@ public class YmlUtils {
     public static Map<String, Object> patternMap;
     public static final DumperOptions OPTIONS = new DumperOptions();
 
-    @PostConstruct
+    //@PostConstruct
     public void init() throws NacosException {
         ConfigService configService = NacosFactory.createConfigService(nacosConfigProperties.assembleConfigServiceProperties());
         String content = configService.getConfig(dataId, nacosConfigProperties.getGroup(),1000);

@@ -1,2 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.ducheng.dynamic.log.desensitize.config.AutoDynamicLogConfig
