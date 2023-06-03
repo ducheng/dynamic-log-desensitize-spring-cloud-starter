@@ -1,6 +1,4 @@
 package com.ducheng.dynamic.log.desensitize.config;
-
-
 import com.alibaba.cloud.nacos.NacosConfigProperties;
 import com.alibaba.nacos.api.NacosFactory;
 import com.alibaba.nacos.api.config.ConfigService;
@@ -25,6 +23,10 @@ public class NacosRefresher extends AbstractRefresher  implements ApplicationLis
 
     @Override
     public void onApplicationEvent(EnvironmentChangeEvent environmentChangeEvent) {
+        refresher();
+    }
+
+    public void   refresher() {
         ConfigService configService = null;
         try {
             configService = NacosFactory.createConfigService(nacosConfigProperties.assembleConfigServiceProperties());
@@ -35,4 +37,5 @@ public class NacosRefresher extends AbstractRefresher  implements ApplicationLis
             e.printStackTrace();
         }
     }
+
 }
